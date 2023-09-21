@@ -1,12 +1,13 @@
 import java.util.*;
+import java.io.*;
 
 public class OGraph extends Graph
 {
-    public String graphName;
-    public List<List<Boolean>> adjacencyList;
-
-    public OGraph(String gName) {}
-    public OGraph(Graph g) {}
+    public OGraph(String gName)
+    {
+        graphName = gName;
+    }
+    public OGraph(OGraph g) {}
     public OGraph(String gName, String fName) {}
 
     public void AddTop (String tName) {}

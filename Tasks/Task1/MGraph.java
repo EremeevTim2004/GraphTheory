@@ -1,12 +1,13 @@
 import java.util.*;
+import java.io.*;
 
 public class MGraph extends Graph
 {
-    public String graphName;
-    public List<List<Boolean>> adjacencyList;
-
-    public MGraph(String gName) {}
-    public MGraph(Graph g) {}
+    public MGraph(String gName)
+    {
+        graphName = gName;
+    }
+    public MGraph(MGraph g) {}
     public MGraph(String gName, String fName) {}
 
     public void AddTop (String tName) {}

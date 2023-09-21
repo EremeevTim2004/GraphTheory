@@ -1,12 +1,13 @@
 import java.util.*;
+import java.io.*;
 
 public class NOGraph extends Graph
 {
-    public String graphName;
-    public List<List<Boolean>> adjacencyList;
-
-    public NOGraph(String gName) {}
-    public NOGraph(Graph g) {}
+    public NOGraph(String gName)
+    {
+        graphName = gName;
+    }
+    public NOGraph(NOGraph g) {}
     public NOGraph(String gName, String fName) {}
 
     public void AddTop (String tName) {}

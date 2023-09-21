@@ -1,10 +1,6 @@
 import java.util.*;
 import java.io.*;
 
-//package OGraph;
-//package NOGraph;
-//package MGraph;
-
 public class Program
 {
     public static void main(String[] args) throws Exception
@@ -41,7 +37,22 @@ public class Program
                 {
                     System.out.println("Введите имя гафа.");
                     String gName = in.nextLine();
-                    graphBase.add(OGraph(gName));
+
+                    for (int i = 0; i < graphBase.size(); i ++)
+                    {
+                        if (graphBase.get(i).graphName == gName)
+                        {
+                            System.out.println("Граф с таким именем уже есть.");
+                            break;
+                        } else
+                        {
+                            System.out.println("Такое имя свободно.");
+                        }
+                    }
+
+                    OGraph oGraph = new OGraph(gName);
+                    graphBase.add(oGraph);
+
                     break;
                 }
                 // 
@@ -49,7 +60,22 @@ public class Program
                 {
                     System.out.println("Введите имя гафа.");
                     String gName = in.nextLine();
-                    graphBase.add(NOGraph(gName));
+
+                    for (int i = 0; i < graphBase.size(); i ++)
+                    {
+                        if (graphBase.get(i).graphName == gName)
+                        {
+                            System.out.println("Граф с таким именем уже есть.");
+                            break;
+                        } else
+                        {
+                            System.out.println("Такое имя свободно.");
+                        }
+                    }
+
+                    NOGraph noGraph = new NOGraph(gName);
+                    graphBase.add(noGraph);
+
                     break;
                 }
                 //
@@ -57,13 +83,55 @@ public class Program
                 {
                     System.out.println("Введите имя гафа.");
                     String gName = in.nextLine();
-                    graphBase.add(MGraph(gName));
+
+                    for (int i = 0; i < graphBase.size(); i ++)
+                    {
+                        if (graphBase.get(i).graphName == gName)
+                        {
+                            System.out.println("Граф с таким именем уже есть.");
+                            break;
+                        } else
+                        {
+                            System.out.println("Такое имя свободно.");
+                        }
+                    }
+
+                    MGraph mGraph = new MGraph(gName);
+                    graphBase.add(mGraph);
+
+                    break;
+                }
+                //
+                case 3:
+                {
+                    for (int i = 0; i < graphBase.size(); i ++)
+                    {
+                        System.out.println(graphBase.get(i).graphName);
+                    }
+                    
+                    System.out.println("Выбирите граф для копирования.");
+                    int gNum = in.nextInt();
+
+                    if (graphBase.get(gNum).getClass().getName() == "OGraph") 
+                    {
+                        graphBase.add(OGraph(graphBase.get(gNum)));
+                        graphBase.get(gNum).graphName += " Copy";
+                    } else if (graphBase.get(gNum).getClass().getName() == "NOGraph")
+                    {
+                        graphBase.add(NOGraph(graphBase.get(gNum)));
+                        graphBase.get(gNum).graphName += " Copy";
+                    } else if (graphBase.get(gNum).getClass().getName() == "MGraph") 
+                    {
+                        graphBase.add(MGraph(graphBase.get(gNum)));
+                        graphBase.get(gNum).graphName += " Copy";
+                    }
+
                     break;
                 }
                 // 
-                case 3:
+                case 4:
                 {
-                    System.out.println("Введите имя файла из которого будете считывать данные.");
+                    System.out.println("Введите имя файла, из которого будете считывать данные.");
                     String fName = in.nextLine();
 
                     FileReader fr = new FileReader(fName);
@@ -72,19 +140,14 @@ public class Program
                     break;
                 }
                 //
-                case 4:
+                case 5:
                 {
-                    System.out.println("");
+                    System.out.println("Введите имя файла, в который будут заностится данные.");
                     String fName = in.nextLine();
 
                     FileWriter fw = new FileWriter(fName);
 
                     fw.close();
-                    break;
-                }
-                //
-                case 5:
-                {
                     break;
                 }
                 //
