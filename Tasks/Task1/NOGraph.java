@@ -6,6 +6,8 @@ public class NOGraph extends Graph
     public NOGraph(String gName)
     {
         graphName = gName;
+        topNum = 0;
+        edgeNum = 0;
     }
     public NOGraph(NOGraph g) {}
     public NOGraph(String gName, String fName) {}

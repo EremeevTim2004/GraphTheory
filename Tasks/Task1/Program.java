@@ -24,7 +24,7 @@ public class Program
             System.out.println("5 - Содать граф на основе файла.");
             System.out.println("6 - Создать файл на основе графа.");
             System.out.println("7 - Изменить граф из базы.");
-            System.out.println("6 - Вывести информацию о всех графах.");
+            System.out.println("8 - Вывести информацию о всех графах.");
             System.out.println("9 - Отформатировать базу.");
             System.out.println("10 - Выйти из программы.");
 
@@ -32,7 +32,7 @@ public class Program
 
             switch(action1)
             {
-                // 
+                // Создание пустого ориентированного графа
                 case 0:
                 {
                     System.out.println("Введите имя гафа.");
@@ -44,18 +44,14 @@ public class Program
                         {
                             System.out.println("Граф с таким именем уже есть.");
                             break;
-                        } else
-                        {
-                            System.out.println("Такое имя свободно.");
-                        }
+                        } else System.out.println("Такое имя свободно.");
                     }
 
                     OGraph oGraph = new OGraph(gName);
                     graphBase.add(oGraph);
 
                     break;
-                }
-                // 
+                } // Создание пустого неориентированного графа
                 case 1:
                 {
                     System.out.println("Введите имя гафа.");
@@ -67,18 +63,14 @@ public class Program
                         {
                             System.out.println("Граф с таким именем уже есть.");
                             break;
-                        } else
-                        {
-                            System.out.println("Такое имя свободно.");
-                        }
+                        } else System.out.println("Такое имя свободно.");
                     }
 
                     NOGraph noGraph = new NOGraph(gName);
                     graphBase.add(noGraph);
 
                     break;
-                }
-                //
+                } // Создание пустого смешанного графа
                 case 2:
                 {
                     System.out.println("Введите имя гафа.");
@@ -90,45 +82,40 @@ public class Program
                         {
                             System.out.println("Граф с таким именем уже есть.");
                             break;
-                        } else
-                        {
-                            System.out.println("Такое имя свободно.");
-                        }
+                        } else System.out.println("Такое имя свободно.");
                     }
 
                     MGraph mGraph = new MGraph(gName);
                     graphBase.add(mGraph);
 
                     break;
-                }
-                //
+                } // Создать новый граф-копию i-го графа
                 case 3:
                 {
-                    for (int i = 0; i < graphBase.size(); i ++)
-                    {
-                        System.out.println(graphBase.get(i).graphName);
-                    }
+                    for (int i = 0; i < graphBase.size(); i ++) System.out.println(graphBase.get(i).graphName);
                     
                     System.out.println("Выбирите граф для копирования.");
                     int gNum = in.nextInt();
 
                     if (graphBase.get(gNum).getClass().getName() == "OGraph") 
                     {
-                        graphBase.add(OGraph(graphBase.get(gNum)));
+                        OGraph oGraphCopy = OGraph(graphBase.get(gNum)); 
+                        graphBase.add(oGraphCopy);
                         graphBase.get(gNum).graphName += " Copy";
                     } else if (graphBase.get(gNum).getClass().getName() == "NOGraph")
                     {
-                        graphBase.add(NOGraph(graphBase.get(gNum)));
+                        NOGraph nOGraphCopy = NOGraph(graphBase.get(gNum)); 
+                        graphBase.add(nOGraphCopy);
                         graphBase.get(gNum).graphName += " Copy";
                     } else if (graphBase.get(gNum).getClass().getName() == "MGraph") 
                     {
-                        graphBase.add(MGraph(graphBase.get(gNum)));
+                        MGraph mGraphCopy = MGraph(graphBase.get(gNum)); 
+                        graphBase.add(mGraphCopy);
                         graphBase.get(gNum).graphName += " Copy";
                     }
 
                     break;
-                }
-                // 
+                } // Создать новый граф на основе файла-конфигуратора
                 case 4:
                 {
                     System.out.println("Введите имя файла, из которого будете считывать данные.");
@@ -138,8 +125,7 @@ public class Program
 
                     fr.close();
                     break;
-                }
-                //
+                } // Создать файл-конфигуратор на основе i-го графа
                 case 5:
                 {
                     System.out.println("Введите имя файла, в который будут заностится данные.");
@@ -149,10 +135,15 @@ public class Program
 
                     fw.close();
                     break;
-                }
-                //
+                } // Настройка i-го графа
                 case 6:
                 {
+                    for (int i = 0; i < graphBase.size(); i ++) System.out.println(graphBase.get(i).graphName);
+                    
+                    System.out.println("Выбирите граф для дальнейших преобразований.");
+                    int gNum = in.nextInt();
+                    String gType = graphBase.get(gNum).getClass().getName();
+
                     while (!eFlag2)
                     {
                         System.out.println("Введите что будете делать:");
@@ -167,49 +158,96 @@ public class Program
 
                         switch(action2)
                         {
-                            //
+                            // Добавить вершину
                             case 0:
-                            {}
-                            //
+                            {
+                                if (gType == "OGraph")
+                                {} else if (gType == "NOGraph")
+                                {} else if (gType == "MGraph")
+                                {}
+
+                                break;
+                            } // Добавить ребро
                             case 1:
-                            {}
-                            //
+                            {
+                                if (gType == "OGraph")
+                                {} else if (gType == "NOGraph")
+                                {} else if (gType == "MGraph")
+                                {}
+
+                                break;
+                            } // Удалить вершину
                             case 2:
-                            {}
-                            //
+                            {
+                                if (gType == "OGraph")
+                                {} else if (gType == "NOGraph")
+                                {} else if (gType == "MGraph")
+                                {}
+
+                                break;
+                            } // Удалить ребро
                             case 3:
-                            {}
-                            //
+                            {
+                                if (gType == "OGraph")
+                                {} else if (gType == "NOGraph")
+                                {} else if (gType == "MGraph")
+                                {}
+
+                                break;
+                            } // Очистить список смежности
                             case 4:
-                            {}
-                            //
+                            {
+                                if (gType == "OGraph")
+                                {} else if (gType == "NOGraph")
+                                {} else if (gType == "MGraph")
+                                {}
+
+                                break;
+                            } // Выход из режима редактирования графа
                             case 5:
-                            {}
-                            //
-                            default:
-                            {}
+                            {
+                                eFlag2 = true;
+                                break;
+                            } default:
+                            {
+                                System.out.println("Нет такой опции!");
+                                break;
+                            }
                         }
                     }
                     break;
-                }
-                //
+                } // Вывести информацию о базе
                 case 7:
                 {
+                    for (int i = 0; i < graphBase.size(); i ++)
+                    {
+                        System.out.println(graphBase.get(i).graphName + " ");
+                        System.out.print(graphBase.get(i).topNum + " ");
+                        System.out.print(graphBase.get(i).edgeNum + " ");
+                        for (int j = 0; j < graphBase.get(i).adjacencyList.size(); j ++)
+                        {
+                            for (int k = 0; k < graphBase.get(i).adjacencyList.size(); k ++)
+                            {
+                                System.out.println(graphBase.get(i).adjacencyList.get(j).get(k));
+                            }
+                        }
+                        System.out.println(".");
+                    }
                     break;
-                }
-                //
+                } // Очистка базы
                 case 8:
                 {
+                    graphBase.removeAll(graphBase);
+                    System.out.println("База успешно отформатированна.");
                     break;
-                }
-                //
+                } // Выход из программы
                 case 9:
                 {
+                    eFlag1 = true;
                     break;
-                }
-                //
-                default:
+                } default:
                 {
+                    System.out.println("Нет такой опции!");
                     break;
                 }
             }

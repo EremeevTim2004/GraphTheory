@@ -6,6 +6,8 @@ public class MGraph extends Graph
     public MGraph(String gName)
     {
         graphName = gName;
+        topNum = 0;
+        edgeNum = 0;
     }
     public MGraph(MGraph g) {}
     public MGraph(String gName, String fName) {}
